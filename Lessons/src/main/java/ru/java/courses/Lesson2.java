@@ -1,5 +1,7 @@
 package ru.java.courses;
 
+import java.util.Scanner;
+
 class Lesson2 {
 
     /**
@@ -11,8 +13,29 @@ class Lesson2 {
      * @return возвращаем только целую часть от полученного результата,
      * хвост отбрасываем без откругления
      */
-    static int formula(int x) {
-        return 0;
+
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        Lesson2 lesson=new Lesson2();
+
+        System.out.print("Введите x = ");
+        int answer=s.nextInt();
+        Integer result=lesson.formula(answer);
+        System.out.println("Ответ =  " + result);
+
+        System.out.println("Введите ФИО: ");
+        String new_string=s.nextLine();
+        new_string=s.nextLine();
+        //System.out.println(new_string);
+        String result_string=lesson.initials(new_string);
+        System.out.println("Инициалы: "+result_string);
+    }
+
+    static int formula(int x)
+    {
+        int result=(int)Math.sqrt(13*x+13/x);
+        return result;
     }
 
     /**
@@ -28,8 +51,13 @@ class Lesson2 {
      *
      * @return возвращаем инициалы в верхнем регистре разделенные точкой, как в примере выше
      */
-    static String initials(String fullName) {
-        return null;
+    static String initials(String fullName)
+    {
+        String result_string=new String();
+        for(String current_string : fullName.split(" "))
+        {
+            result_string = result_string + current_string.charAt(0) + ".";
+        }
+        return result_string.toUpperCase();
     }
-
 }
